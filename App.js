@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-native";
 
 export default function App() {
   var list = [
@@ -27,7 +27,14 @@ export default function App() {
           );
         }}
       />
+<View style={{position:'absolute', bottom:20, width:'100%',flexDirection:'row'}}></View>
+<View style={{width:'80%'}}>
+          <TextInput />
+    </View>
+    <View style={{width:'20%'}}>
 
+    </View>
+    <Button title={'Dodaj'} onPress={()=> {}} />
     </View>
   );
 }
