@@ -1,21 +1,17 @@
 import React from "react";
 import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-native";
+import {styles} from './styles'
 
 class AddNew extends React.Component {
   render() {
     return (
       <View
-        style={{
-          position: "absolute",
-          bottom: 20,
-          width: "100%",
-          flexDirection: "row",
-        }}
+        style={styles.addNewContainer}
       >
-        <View style={{ width: "80%" }}>
-          <TextInput style={{ fontSize: 20 }} />
+        <View style={styles.addNewContainerLeft}>
+          <TextInput style={styles.addNewContainerTextInput} />
         </View>
-        <View style={{ width: "20%" }}>
+        <View style={styles.addNewContainerRight}>
           <Button title={"Dodaj"} onPress={() => {}} />
         </View>
       </View>

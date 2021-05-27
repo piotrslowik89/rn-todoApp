@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-native";
 import AddNew from './src/containers/AddNew'
+import TodoList from './src/containers/TodoList'
 
 export default function App() {
   var list = [
@@ -12,22 +13,7 @@ export default function App() {
 
   return (
     <View style={{marginTop:20, height:'100%'}}>
-      <FlatList data={list}
-        renderItem={(position) => {
-          return (
-            <View key={position.item.id}
-            style={{width:'100%', padding:15, borderButton:'1px',borderBottomColor:'black',flexDirection:'row'}}>
-             
-             <View style={{width:'80%'}}>
-               <Text style={{fontSize:20, alignSelf:'center'}}>{position.item.text}</Text>
-               </View>
-               <View style={{width:'20%'}}>
-                 <Text style={{fontSize:20,alignSelf:'center'}}>X</Text>
-                 </View>
-            </View>
-          );
-        }}
-      />
+      <TodoList list={list} />
       <AddNew/>
     </View>
   );
