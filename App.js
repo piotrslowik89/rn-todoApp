@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-native";
+import AddNew from './src/containers/AddNew'
 
 export default function App() {
   var list = [
@@ -27,23 +28,9 @@ export default function App() {
           );
         }}
       />
-<View style={{position:'absolute', bottom:20, width:'100%',flexDirection:'row'}}></View>
-<View style={{width:'80%'}}>
-          <TextInput />
-    </View>
-    <View style={{width:'20%'}}>
-
-    </View>
-    <Button title={'Dodaj'} onPress={()=> {}} />
+      <AddNew/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+
