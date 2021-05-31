@@ -3,16 +3,33 @@ import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-nativ
 import {styles} from './styles'
 
 class AddNew extends React.Component {
+  constructor(){
+    super();
+
+    this.state ={
+      text:''
+    }
+  }
   render() {
     return (
       <View
         style={styles.addNewContainer}
       >
         <View style={styles.addNewContainerLeft}>
-          <TextInput style={styles.addNewContainerTextInput} />
+          <TextInput 
+          style={styles.addNewContainerTextInput}
+          onChangeText={()=>{
+this.setState({
+  text:text
+})
+          }} />
         </View>
         <View style={styles.addNewContainerRight}>
-          <Button title={"Dodaj"} onPress={() => {}} />
+          <Button title={"Dodaj"} onPress={() => {
+            this.props.onPress ? () =>{
+              this.props.onPress(this.state.text)
+            } : ()=> {}
+          }} />
         </View>
       </View>
     );
