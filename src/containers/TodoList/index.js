@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import { TextInput, FlatList, StyleSheet, Text, View, Button } from "react-native";
+import { TextInput, FlatList, StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import {styles} from './styles'
 
 class TodoList extends React.Component {
@@ -17,6 +17,15 @@ class TodoList extends React.Component {
                <Text style={styles.rowContainerText}>{position.item.text}</Text>
                </View>
                <View style={styles.rowContainerRight}>
+                 <TouchableOpacity onPress={()=>{
+                   if(!this.props.onDelete){
+                    return;
+                  }
+
+                  this.props.onDelete(item.item.id)
+                 }}>
+
+                 </TouchableOpacity>
                  <Text style={styles.rowContainerText}>X</Text>
                  </View>
             </View>
