@@ -25,12 +25,39 @@ class App extends React.Component {
   render() {
     return (
       <View style={{ marginTop: 20, height: "100%" }}>
-        <TodoList list={this.state.list} />
-        <AddNew />
+        <TodoList
+          list={this.state.list}
+          onDelete={(itemId) => {
+            var list = [...this.state.list];
+            var index = 0;
+
+            list.forEach((item, itemIndex) => {
+              if (item.id !== itemId) {
+                return;
+              }
+              index = item.Index;
+              return false;
+            });
+            list.splice(index, 1);
+
+            this.setState({ list });
+          }}
+        />
+        <AddNew
+          onPress={(text) => {
+            var list = [...this.state.list];
+
+            list.push({
+              id: Math.random() + '',
+              text: text,
+            });
+            this.setState({ list });
+          }}
+        />
       </View>
     );
   }
 }
 export default function () {
-  return <App />
+  return <App />;
 }

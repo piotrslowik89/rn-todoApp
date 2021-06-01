@@ -32,13 +32,13 @@ class AddNew extends React.Component {
         <View style={styles.addNewContainerRight}>
           <Button
             title={"Dodaj"}
-            onPress={() => {
+            onPress={
               this.props.onPress
                 ? () => {
                     this.props.onPress(this.state.text);
                   }
-                : () => {};
-            }}
+                : () => {}
+            }
           />
         </View>
       </View>
