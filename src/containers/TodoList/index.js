@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  TextInput,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-} from "react-native";
 import { styles } from "./styles";
+import { FlatList, Text, View, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import { deleteItem } from "../../actions";
 
 class TodoList extends React.Component {
   render() {
@@ -19,18 +13,12 @@ class TodoList extends React.Component {
           return (
             <View key={item.item.id} style={styles.rowContainer}>
               <View style={styles.rowContainerLeft}>
-                <Text style={styles.rowContainerText}>
-                  {item.item.text}
-                </Text>
+                <Text style={styles.rowContainerText}>{item.item.text}</Text>
               </View>
               <View style={styles.rowContainerRight}>
                 <TouchableOpacity
                   onPress={() => {
-                    if (!this.props.onDelete) {
-                      return;
-                    }
-
-                    this.props.onDelete(item.item.id);
+                    this.props.deleteItem(item.item.id);
                   }}
                 >
                   <Text style={styles.rowContainerText}>X</Text>
@@ -43,4 +31,11 @@ class TodoList extends React.Component {
     );
   }
 }
-export default TodoList;
+const mapStateToProps = (state) => ({
+  list: state.todoList,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteItem: (id) => dispatch(deleteItem(id)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

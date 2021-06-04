@@ -1,21 +1,15 @@
 import React from "react";
-import {
-  TextInput,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity
-} from "react-native";
+import { TextInput, View, Button } from "react-native";
 import { styles } from "./styles";
+import { connect } from "react-redux";
+import { addNewItem } from "../../actions";
 
 class AddNew extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      text: '',
+      text: "",
     };
   }
   render() {
@@ -25,7 +19,7 @@ class AddNew extends React.Component {
           <TextInput
             style={styles.addNewContainerTextInput}
             onChangeText={(text) => {
-              this.setState({text});
+              this.setState({ text });
             }}
           />
         </View>
@@ -33,16 +27,15 @@ class AddNew extends React.Component {
           <Button
             title={"Dodaj"}
             onPress={
-              this.props.onPress
-                ? () => {
-                    this.props.onPress(this.state.text);
-                  }
-                : () => {}
-            }
+              this.props.addNewItem(this.state.text)}
           />
         </View>
       </View>
     );
   }
 }
-export default AddNew;
+const mapDispatchToProps = (dispatch) => ({
+  addNewItem: (text) => dispatch(addNewItem(text)),
+});
+export default connect(null, mapDispatchToProps)(AddNew);
+ 
